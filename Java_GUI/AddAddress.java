@@ -1,4 +1,4 @@
-package comp421;
+package Java_GUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -41,6 +41,7 @@ public class AddAddress extends JFrame {
 		add.setPreferredSize(new Dimension(20,40));
 		this.add(add,BorderLayout.SOUTH);
 	}
+	
 	public static void invoke (int uid, SQL sqlo,MainFrame  mainFrame){
 		JFrame address = new AddAddress(uid,sqlo,mainFrame);
 		address.setTitle("Add a new address");
@@ -61,8 +62,7 @@ public class AddAddress extends JFrame {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
-			
+						
 			String Name= name.getText();
 			String Pnum= phonenum.getText();
 			String Streetaddr= streetaddr.getText();
@@ -77,7 +77,6 @@ public class AddAddress extends JFrame {
 				sqlcode="insert into address values ("+addrid+","+userid+", \'"+Name+"\', \'"+Pnum+"\', \'"+Province+"\', \'"+City+"\', \'"+Streetaddr+"\', \'"+Postalcode+"\')"; // Insert a new address of this user to the table address
 				newaddr.WriteExcute(sqlcode);
 				JOptionPane.showMessageDialog(null, "You have successfully added a new address", "Success", JOptionPane.INFORMATION_MESSAGE,new ImageIcon(AddAddress.class.getResource("success.png")));
-				
 				
 				mainFrame.setVisible(true);
 				mainFrame.setSearchAndBuyButtonEnable(true);

@@ -1,4 +1,5 @@
-package comp421;
+package Java_GUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -42,18 +43,18 @@ public class addressFrame extends JPanel
         table.addMouseListener(new MouseAdapter(){
             public void mouseClicked(MouseEvent e){
                 if(e.getClickCount() == 1){
-                    int columnIndex = table.columnAtPoint(e.getPoint()); //获取点击的列
-                    int rowIndex = table.rowAtPoint(e.getPoint()); //获取点击的行
+                    int columnIndex = table.columnAtPoint(e.getPoint());
+                    int rowIndex = table.rowAtPoint(e.getPoint());
                    
-                    if(columnIndex == 5) {//第0列时，执行代码
-                        if(table.getValueAt(rowIndex,columnIndex) == null){ //如果未初始化，则设置为false
+                    if(columnIndex == 5) {
+                        if(table.getValueAt(rowIndex,columnIndex) == null){
                               table.setValueAt(false, rowIndex, columnIndex);
                           }
                        
-                        if(((Boolean)table.getValueAt(rowIndex,columnIndex)).booleanValue()){ //原来选中
-                               table.setValueAt(false, rowIndex ,5); //点击后，取消选中
+                        if(((Boolean)table.getValueAt(rowIndex,columnIndex)).booleanValue()){
+                               table.setValueAt(false, rowIndex ,5);
                           }
-                        else {//原来未选中
+                        else {
                               table.setValueAt(true, rowIndex, 5);
                           }
                      }
@@ -62,9 +63,7 @@ public class addressFrame extends JPanel
             }
         });
         
-        initColumnSizes(table);
         JScrollPane scrollPane= new JScrollPane(table);
-        
         add(scrollPane);
      }
 	
@@ -81,92 +80,55 @@ public class addressFrame extends JPanel
         }
         return rowCount;
     }
-
-	
-	private void initColumnSizes(JTable table)
-	{/*
-		AddressModule model = (AddressModule)table.getModel();
-		TableColumn column = null;
-		Component comp = null;
-		int headerWidth = 0;
-		int cellWidth = 0;
-		
-		Object longValue[] = model.longValue;
-		
-		TableCellRenderer headerRenderer = table.getTableHeader().getDefaultRenderer();
-		
-		for(int i = 0; i<5; i++)
-	     {
-	    	 column = table.getColumnModel().getColumn(i);
-	    	 
-	    	 comp = headerRenderer.getTableCellRendererComponent(table, longValue[i], false, false, 0, 0);
-	    	 headerWidth = comp.getPreferredSize().width;
-	    	 /*comp = table.getDefaultRenderer(model.getColumnClass(i)).getTableCellRendererComponent(
-                       table, longValue[i],
-                       false, false, 0, i);
-	    	 
-        cellWidth = comp.getPreferredSize().width;
-       
-        column.setPreferredWidth(Math.max(headerWidth, cellWidth));
-	}*/
-	}
 	
 	 public class AddressModule extends AbstractTableModel
-	{
-	   String[] columnName = {"Name","Province","City","Street Address","Post Code", "select"};
-	   Object[][] data = null;
-	   Object[] longValue = {"Kitra N. Cabrera", "New Brunswick", "Campbellton", "P.O. Box 268, 4081 Suspendisse Street", "E2J 3G6", new Boolean(false)};
+	 {
+		 String[] columnName = {"Name","Province","City","Street Address","Post Code", "select"};
+		 Object[][] data = null;
+		 Object[] longValue = {"Kitra N. Cabrera", "New Brunswick", "Campbellton", "P.O. Box 268, 4081 Suspendisse Street", "E2J 3G6", new Boolean(false)};
 	   
+		 public AddressModule() throws SQLException
+		 {
+			 super();
+			 data = (Object[][]) initData();
+		 }
 
-	   
-	   public AddressModule() throws SQLException
-		{
-		super();
-		data = (Object[][]) initData();
-		}
-
-		@Override
-		public int getColumnCount() {
-		  return columnName.length;	
-		}
+		 @Override
+		 public int getColumnCount() {
+			 return columnName.length;	
+		 }
 		
-		public boolean isCellEditable(int row, int column)  
-        {  
-            // 带有按钮列的功能这里必须要返回true不然按钮点击时不会触发编辑效果，也就不会触发事件。   
-            if (column == 5)  
-            {  
-                return true;  
-            }  
-            else  
-            {  
-                return false;  
-            }  
-        } 
+		 public boolean isCellEditable(int row, int column)  
+		 {  
+			 if (column == 5)  
+				 return true;  
+			 else
+				 return false;
+		 }
 		
-		@Override
+		 @Override
 		 public String getColumnName(int col) {
-           return columnName[col];
-       }
+			 return columnName[col];
+		 }
 
-		public void setValueAt(Object o, int rowIndex, int columnIndex)
-		{
-			data[rowIndex][columnIndex] = o;
-			table.repaint();
-		}
+		 public void setValueAt(Object o, int rowIndex, int columnIndex)
+		 {
+			 data[rowIndex][columnIndex] = o;
+			 table.repaint();
+		 }
 		
-		
-		@Override
-		public int getRowCount() {
-			return data.length;
-		}
+		 @Override
+		 public int getRowCount() {
+			 return data.length;
+		 }
 
-		public Object getValueAt(int rowIndex, int columnIndex) {
-			return data[rowIndex][columnIndex];
-		}
+		 public Object getValueAt(int rowIndex, int columnIndex) {
+			 return data[rowIndex][columnIndex];
+		 }
 		
 		 public Class getColumnClass(int c) {
-	            return getValueAt(0, c).getClass();
-	        }
+			 return getValueAt(0, c).getClass();
+	     }
 		 
 		 private Object[] initData() throws SQLException
 		 {
@@ -192,7 +154,7 @@ public class addressFrame extends JPanel
 			 }
 			 return data;
 		 }
-		 }
+	 }
 	
 	
 	public  void createUI(int id, SQL sqlo) throws SQLException

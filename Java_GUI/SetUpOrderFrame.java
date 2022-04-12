@@ -1,4 +1,5 @@
-package comp421;
+package Java_GUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,9 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.table.*;
 
-import comp421.SaveToCartFrame.goodsTableModule;
-// sql code to be implemented in submitButton --done
-//case that there is nothing in the cart 
+import Java_GUI.SaveToCartFrame.goodsTableModule;
 
 public class SetUpOrderFrame extends JPanel{
 	
@@ -47,18 +46,18 @@ public class SetUpOrderFrame extends JPanel{
       table.addMouseListener(new MouseAdapter(){
           public void mouseClicked(MouseEvent e){
               if(e.getClickCount() == 1){
-                  int columnIndex = table.columnAtPoint(e.getPoint()); //获取点击的列
-                  int rowIndex = table.rowAtPoint(e.getPoint()); //获取点击的行
+                  int columnIndex = table.columnAtPoint(e.getPoint()); //èŽ·å�–ç‚¹å‡»çš„åˆ—
+                  int rowIndex = table.rowAtPoint(e.getPoint()); //èŽ·å�–ç‚¹å‡»çš„è¡Œ
                   
-                  if(columnIndex == 3) {//第0列时，执行代码
-                      if(table.getValueAt(rowIndex,columnIndex) == null){ //如果未初始化，则设置为false
+                  if(columnIndex == 3) {//ç¬¬0åˆ—æ—¶ï¼Œæ‰§è¡Œä»£ç �
+                      if(table.getValueAt(rowIndex,columnIndex) == null){ //å¦‚æžœæœªåˆ�å§‹åŒ–ï¼Œåˆ™è®¾ç½®ä¸ºfalse
                             table.setValueAt(false, rowIndex, columnIndex);
                         }
                      
-                      if(((Boolean)table.getValueAt(rowIndex,columnIndex)).booleanValue()){ //原来选中
-                             table.setValueAt(false, rowIndex, 3); //点击后，取消选中
+                      if(((Boolean)table.getValueAt(rowIndex,columnIndex)).booleanValue()){ //åŽŸæ�¥é€‰ä¸­
+                             table.setValueAt(false, rowIndex, 3); //ç‚¹å‡»å�Žï¼Œå�–æ¶ˆé€‰ä¸­
                         }
-                      else {//原来未选中
+                      else {//åŽŸæ�¥æœªé€‰ä¸­
                             table.setValueAt(true, rowIndex, 3);
                         }
                    }
@@ -117,7 +116,7 @@ public class SetUpOrderFrame extends JPanel{
 	 
 	public class OrderModule extends AbstractTableModel
 	{
-		String[] columnName = {"Product　Name","Added Time","Quantity","Selcted"};
+		String[] columnName = {"Productã€€Name","Added Time","Quantity","Selcted"};
 		Object [][] data = null;
 		Object[] longValue = {"DELL Ultra HD 4k Monitor P2715Q 27-Inch Screen LED-Lit Monitor","2017-02-21","100",new Boolean(true)};
 		
@@ -138,7 +137,7 @@ public class SetUpOrderFrame extends JPanel{
 		}
 		public boolean isCellEditable(int row, int column)  
         {  
-            // 带有按钮列的功能这里必须要返回true不然按钮点击时不会触发编辑效果，也就不会触发事件。   
+            // å¸¦æœ‰æŒ‰é’®åˆ—çš„åŠŸèƒ½è¿™é‡Œå¿…é¡»è¦�è¿”å›žtrueä¸�ç„¶æŒ‰é’®ç‚¹å‡»æ—¶ä¸�ä¼šè§¦å�‘ç¼–è¾‘æ•ˆæžœï¼Œä¹Ÿå°±ä¸�ä¼šè§¦å�‘äº‹ä»¶ã€‚   
             if (column == 3)  
             {  
                 return true;  

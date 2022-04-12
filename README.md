@@ -1,10 +1,14 @@
 # Online-Shopping-Cart-Database-Project
 
-You may find more details about this project at my [personal blog](http://www.aaronguan.com/database-project.html)
+Simple E-Commerce Online Stall built with Java Console and stored in a Database.
 
-## ER Diagram
+## Databases
 
-![image](http://www.aaronguan.com/images/database/ER.PNG)
+Do check out the Database scripts and download the [MySQL Connector] (https://osdn.net/projects/sfnet_vimcloud/downloads/mysql-connector-java-5.1.18-bin.jar/).
+
+* Table.sql: Create tables for entities and relationships above.
+* Insert.sql: Insert datas into tables.
+* Modification.sql: Modify the data.
 
 ### Entities
 
@@ -28,15 +32,7 @@ You may find more details about this project at my [personal blog](http://www.aa
 * Deliver To (__addrid__, __orderNumber__, TimeDelivered) (addrid ref Address, orderNumber ref Order)
 * Payment (__C.cardNumber__, __orderNumber__, payTime) (C.cardNumber ref Credit Card, orderNumber ref Order)
 
-## Create Database
-
-* [Table.sql](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Table.sql): Create tables for entities and relationships above.
-* [Insert.sql](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Insert.sql): Insert datas into tables.
-* [Modification.sql](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Modification.sql): Modify the data.
-
 ## Java GUI
-
-[simpleJDBCPostgres.java](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/simpleJDBCPostgres.java) is only a sample Java to link the Postgresql JDBC driver and connect to the database for your reference.
 
 [SQL.java](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Java_GUI/SQL.java) is the acutal program that we wrote to submit the sql execution to the database based on the sample above.
 
@@ -73,6 +69,3 @@ You may find more details about this project at my [personal blog](http://www.aa
 8. [addressFrame.java](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Java_GUI/addressFrame.java): Select a delivery address and finish the shopping.
 
 ![image](http://www.aaronguan.com/images/database/Select%20Addr.png)
-
-
-

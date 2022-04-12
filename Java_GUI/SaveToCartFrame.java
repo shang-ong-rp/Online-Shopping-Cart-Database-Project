@@ -1,4 +1,5 @@
-package comp421;
+package Java_GUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,11 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.table.*;
 
-
-
-//need to add button back -done 
-//sql code to be implemented in button editor -done
-// case no result is empty, will not have table, but implement an panel with notice 
 public class SaveToCartFrame extends JPanel {
 	
 	int userid; 
@@ -64,7 +60,7 @@ public class SaveToCartFrame extends JPanel {
 
     	        this.initPanel();
 
-    	        // 添加按钮。
+    	        // æ·»åŠ æŒ‰é’®ã€‚
     	        this.panel.add(this.button);
     	    }
     	   
@@ -289,7 +285,7 @@ public class SaveToCartFrame extends JPanel {
 		@Override  
         public boolean isCellEditable(int row, int column)  
         {  
-            // 带有按钮列的功能这里必须要返回true不然按钮点击时不会触发编辑效果，也就不会触发事件。   
+            // å¸¦æœ‰æŒ‰é’®åˆ—çš„åŠŸèƒ½è¿™é‡Œå¿…é¡»è¦�è¿”å›žtrueä¸�ç„¶æŒ‰é’®ç‚¹å‡»æ—¶ä¸�ä¼šè§¦å�‘ç¼–è¾‘æ•ˆæžœï¼Œä¹Ÿå°±ä¸�ä¼šè§¦å�‘äº‹ä»¶ã€‚   
             if (column == 9)  
             {  
                 return true;  

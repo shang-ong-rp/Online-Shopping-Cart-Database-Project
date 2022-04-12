@@ -1,6 +1,5 @@
-package comp421;
-// sql code to be implemented in button  --done 
-// test if the address is empty 
+package Java_GUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -35,6 +34,7 @@ public class Login extends JFrame{
 		back.addActionListener(new loginListener());
 		this.add(buttonpanel,BorderLayout.SOUTH);
 	}
+	
 	public static void invoke(SQL sqlo,MainFrame mainFrame){
 		JFrame login = new Login(sqlo,mainFrame);
 		login.setTitle("User log in");
@@ -82,6 +82,7 @@ public class Login extends JFrame{
 			}
 		}
 	}
+	
 	public String getresult() throws SQLException{
 		
 		sqlcode="select phoneNumber from users where userid = "+uid;// Check the pnum based on the uid

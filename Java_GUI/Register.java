@@ -1,4 +1,5 @@
-package comp421;
+package Java_GUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -6,11 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-// need to be modified 
-// card valid data should follow format strictly
-// card number should be made up with only numbers and space ,but no character
-// 
-
 
 public class Register extends JFrame{
 	JTextField name = new JTextField();
@@ -44,6 +40,7 @@ public class Register extends JFrame{
 		submit.setPreferredSize(new Dimension(20,40));
 		this.add(submit, BorderLayout.SOUTH);
 	}
+	
 	public static void invoke (SQL sqlo,MainFrame mainFrame){
 		JFrame register = new Register(sqlo,mainFrame);
 		register.setVisible(true);
@@ -52,6 +49,7 @@ public class Register extends JFrame{
 		register.setLocationRelativeTo(null);
 		register.setTitle("Register a new User");
 	}
+	
 	class registerlistener implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			sqlcode ="select max(userid) from users;";// get the max userid from user table
@@ -90,8 +88,6 @@ public class Register extends JFrame{
 				JOptionPane.showMessageDialog(null, "You have successfully registed, your unique userid is "+ userid+", please keep it for login next time","Register Successfully",JOptionPane.INFORMATION_MESSAGE,new ImageIcon(Register.class.getResource("success.png")));
 				//Return back the current user id
 				
-					
-				
 				try {
 					mainFrame.setUserid(userid);
 				} catch (SQLException e1) {
@@ -103,8 +99,8 @@ public class Register extends JFrame{
 				frame.dispose();
 			}
 		}
-		
 	}
+	
 	public boolean isValidCard(String cardnum){
 		String cardPattern="\\d{4} \\d{4} \\d{4} \\d{4}";
 		Pattern pattern=Pattern.compile(cardPattern);
@@ -114,6 +110,7 @@ public class Register extends JFrame{
 		else 
 			return false;
 	}
+	
 	public boolean isValidDate(String date){
 		
 		String datePattern = "\\d{4}-\\d{1,2}-\\d{1,2}"; 
